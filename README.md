@@ -1,3 +1,8 @@
+# To Do
+Bind a directory
+
+## Introduction
+
 In this example two very simple apps are created, a simple flask app and a simple httpd app. The flask app will call
 the httpd server over a custom network.
 
