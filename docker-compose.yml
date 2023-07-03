@@ -1,0 +1,11 @@
+services:
+  httpd-service:
+    build: ./httpd
+    ports:
+      - 8080:80
+  app:
+    build: ./app
+    environment:
+      HTTPD-HOST: 'httpd-service'
+    ports:
+      - 5000:5000
