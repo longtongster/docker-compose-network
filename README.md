@@ -3,8 +3,12 @@ Bind a directory
 
 ## Introduction
 
-In this example two very simple apps are created, a simple flask app and a simple httpd app. The flask app will call
-the httpd server over a custom network.
+This objective of this repository is to show how networking works with docker and docker-compose. 
+
+The repo contains a very simple app that consists of two parts. There is a very simple httpd container which works
+standalone. There is also a very simple flask app that has two buttons. Clicking the first button shows a simple text
+message that is part of the flask app. Clicking button 2 sends a request to the httpd container using the name of the 
+container (or service in docker-compose)
 
 ## Method 1 - without docker-compose
 
@@ -27,7 +31,12 @@ show that we can call the httpd container by the name using the custom network.
    `docker build -t app .`
 5. Run the app container 
 
-    `docker run -d -p 5000:5000 --network my-nw --name app app`
+    `docker run -d -p 5000:5000 --network my-nw --name app -e HTTPD-HOST=httpd-service app`
+
+#### Remarks:
+- in step 3 the port was available on the localhost due to the port mapping. This can be ommited since the communication 
+   of te app is via the custom network. So you can replace the code there by:
+`docker run -d -p 8080:80 --network my-nw --name httpd-service httpd-img`
 
 ## Method 2 - with docker-compose
 
