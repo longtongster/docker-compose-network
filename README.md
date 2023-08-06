@@ -1,6 +1,9 @@
 # To Do
 Bind a directory
 
+## General remarks:
+- use the python logging module to show messages when `docker container logs <container id>` is used
+
 ## Introduction
 
 This objective of this repository is to show how networking works with docker and docker-compose. 
