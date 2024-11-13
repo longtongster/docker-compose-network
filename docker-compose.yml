@@ -6,6 +6,10 @@ services:
   app:
     build: ./app
     environment:
+      # set HTTPD_HOST variable to the name of the httpd service.
+      # This is more flexible then just hardcoding the service name.
+      # This is similar to some of the GUI container that connect to a
+      # database using a host variable.  
       HTTPD-HOST: 'httpd-service'
     ports:
       - 5000:5000
