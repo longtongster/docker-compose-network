@@ -28,7 +28,7 @@ show that we can call the httpd container by the name using the custom network.
 
     `docker run -d -p 8080:80 --network my-nw --name httpd-service httpd-img`
 
-    You can test the container `http://localhost:8080`
+    You can test the container `http://localhost:8080`. Please note that you do not need `EXPOSE` in the docker file to expose ports. Of course it makes explicit what ports your container is listening on.
 4. Create app image - cd in the app directory
 
    `docker build -t app .`
