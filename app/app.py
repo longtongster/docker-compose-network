@@ -2,7 +2,11 @@ from flask import Flask, render_template
 import requests
 import os
 
+# we use this variable to refer to the httpd_service
+# this is provided as an environment variable
+# when we run/start the container
 httpd_service = os.getenv('HTTPD-HOST',None)
+print(f"The variable httpd_service is set to: {httpd_service}")
 
 app = Flask(__name__)
 
@@ -28,4 +32,4 @@ def index():
     return render_template("index.html")
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=5000)

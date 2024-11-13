@@ -16,7 +16,7 @@ container (or service in docker-compose)
 ## Method 1 - without docker-compose
 
 Objective:
-show that we can call the httpd container by the name using the custom network.
+show that we can call the httpd container by the container name (`httpd_service`) using the custom network.
 
 1. Create a custom network
 
@@ -26,7 +26,7 @@ show that we can call the httpd container by the name using the custom network.
     `docker build -t httpd-img .`
 3. Run the httpd container
 
-    `docker run -d -p 8080:80 --network my-nw --name httpd-service httpd-img`
+    `docker run -d -p 8080:80 --network my-nw --name httpd_service httpd-img`
 
     You can test the container `http://localhost:8080`. Please note that you do not need `EXPOSE` in the docker file to expose ports. Of course it makes explicit what ports your container is listening on.
 4. Create app image - cd in the app directory
@@ -34,7 +34,7 @@ show that we can call the httpd container by the name using the custom network.
    `docker build -t app .`
 5. Run the app container 
 
-    `docker run -d -p 5000:5000 --network my-nw --name app -e HTTPD-HOST=httpd-service app`
+    `docker run -d -p 5000:5000 --network my-nw --name app -e HTTPD-HOST=httpd_service app`
 
 #### Remarks:
 - in step 3 the port was available on the localhost due to the port mapping. This can be ommited since the communication 
