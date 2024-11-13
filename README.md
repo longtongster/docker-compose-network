@@ -39,12 +39,18 @@ show that we can call the httpd container by the container name (`httpd_service`
 #### Remarks:
 - in step 3 the port was available on the localhost due to the port mapping. This can be ommited since the communication 
    of te app is via the custom network. So you can replace the code there by:
-`docker run -d -p 8080:80 --network my-nw --name httpd-service httpd-img`
+`docker run -d --network my-nw --name httpd-service httpd-img`
 
 ## Method 2 - with docker-compose
 
 Go to main directory and run
 
 `docker-compose up -d`
+
+To stop the services type 
+
+`docker-compose down` 
+
+docker-compose will automatically remove the containers
 
 
